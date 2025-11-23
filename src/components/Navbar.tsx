@@ -1,6 +1,7 @@
-"use client"; // Needs to be a client component for NavigationMenu
+"use client";
 
 import Link from "next/link";
+import { ThemeToggle } from "@/components/ThemeToggle"; 
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -11,46 +12,63 @@ import {
 
 export function Navbar() {
   return (
-    <div className="flex justify-center border-b p-4">
+    <div className="flex items-center justify-between border-b p-4">
+      
+      {/* 1. Left Spacer: Pushes content to center/right */}
+      <div className="flex-1" />
+
+      {/* 2. Center: Your existing Navigation Menu */}
       <NavigationMenu>
         <NavigationMenuList>
+          
           <NavigationMenuItem>
-            <Link href="/" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild>
+              <Link href="/" className={navigationMenuTriggerStyle()}>
                 Home
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
-            <Link href="/about" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild>
+              <Link href="/about" className={navigationMenuTriggerStyle()}>
                 About
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
-            <Link href="/education" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild>
+              <Link href="/education" className={navigationMenuTriggerStyle()}>
                 Education
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
-            <Link href="/hobbies" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild>
+              <Link href="/hobbies" className={navigationMenuTriggerStyle()}>
                 Hobbies
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
+
           <NavigationMenuItem>
-            <Link href="/contact" legacyBehavior passHref>
-              <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+            <NavigationMenuLink asChild>
+              <Link href="/contact" className={navigationMenuTriggerStyle()}>
                 Contact
-              </NavigationMenuLink>
-            </Link>
+              </Link>
+            </NavigationMenuLink>
           </NavigationMenuItem>
+
         </NavigationMenuList>
       </NavigationMenu>
+
+      {/* 3. Right: Container for the Switch */}
+      <div className="flex flex-1 justify-end">
+        <ThemeToggle />
+      </div>
+
     </div>
   );
 }

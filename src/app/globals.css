@@ -113,10 +113,19 @@
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
+  :root {
+    /* ... your existing light variables ... */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
   }
-  body {
-    @apply bg-background text-foreground;
+ 
+  .dark {
+    /* These override the root variables when dark mode is active */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    /* ... map other variables similarly ... */
   }
 }
+
